@@ -40,10 +40,10 @@ Supposing your class is at the com.jetbrains package:
 
 <h3>How to initialize</h3>
 <h4>Using static importation:</h4>
-<code>Point3D myCoordinate = point3D("Value", 3.5, False)</code>
+<code>Point3D myCoordinate = point3D(3.0, 3.5, -1.8)</code>
 
 <h4>Using regular importation:</h4>
-<code>Point3D myTuple = Point3D.point3D("Age", 28, True)</code>
+<code>Point3D myTuple = Point3D.point3D(2.4, 28.8, 5.0)</code><br/>
 
 
-elements can be many types, Strings, Booleans, Point3D, it does not really matter, they are generics
+elements can be many types, Strings, Booleans, Point3D, it does not really matter, they are all generic type
