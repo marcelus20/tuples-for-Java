@@ -1,6 +1,6 @@
-package com.company;
+package com.company.tuples;
 
-public class TupleOf3 <B> extends Tupleof2 {
+public class TupleOf3 <B> extends TupleOf2 {
     protected final B _3;
 
     protected <T, G, A> TupleOf3(T _1, G _2, B _3) {
@@ -36,7 +36,7 @@ public class TupleOf3 <B> extends Tupleof2 {
      * @return
      */
 
-    public static <T, G, B>TupleOf3 tupleOf3(Tupleof2 tuple, B _3){
+    public static <T, G, B>TupleOf3 tupleOf3(TupleOf2 tuple, B _3){
         T _1 = (T) tuple.get_1();
         G _2 = (G) tuple.get_2();
         return new TupleOf3(_1, _2, _3);

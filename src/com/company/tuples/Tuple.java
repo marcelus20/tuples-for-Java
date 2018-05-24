@@ -1,4 +1,4 @@
-package com.company;
+package com.company.tuples;
 
 /**
  * The porpouse of using a Tuple class is to fit the need of using tuples, very common in functional programming languages
