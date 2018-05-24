@@ -13,9 +13,9 @@ public class TupleOf3 <B> extends Tupleof2 {
         return new TupleOf3(_1, _2, _3);
     }
 
-    public static <T, G, B>TupleOf3 tupleOf3(Tupleof2 tupleOf2, B _3){
-        T _1 = (T) tupleOf2.get_1();
-        G _2 = (G) tupleOf2.get_2();
+    public static <T, G, B>TupleOf3 tupleOf3(Tupleof2 tuple, B _3){
+        T _1 = (T) tuple.get_1();
+        G _2 = (G) tuple.get_2();
         return new TupleOf3(_1, _2, _3);
     }
 
