@@ -76,8 +76,8 @@ public class Main {
         System.out.println(coord2D);
         System.out.println(coord2D_2);
         System.out.println(coord2D_3);
-        System.out.println("scaling coordindate coord2D by 3: "+ coord2D.scalePoint(3));
-        System.out.println("scaling coordindate coord2D by 3.8: "+ coord2D.scalePoint(3.8));
+        System.out.println("scaling coordindate coord2D by 3: "+ coord2D.scalePointBy(3));
+        System.out.println("scaling coordindate coord2D by 3.8: "+ coord2D.scalePointBy(3.8));
         System.out.println(coord2D_3.translateZ(5));
 
 
@@ -91,7 +91,7 @@ public class Main {
 
 
         //testing 4D coordinates
-        Point4D coord4D = point4D(1, 5, 3, 8).transLateX("12");//(x+12)should return (13, 5, 3, 8)
+        Point4D coord4D = point4D(1, 5, 3, 8).translateX("12");//(x+12)should return (13, 5, 3, 8)
         System.out.println(coord4D);
 
 
