@@ -68,18 +68,18 @@ public class Point4D extends TupleOf4 implements Point {
 
 
     @Override
-    public Point4D transLateX(final Integer translatorX) {
-        return transLateX(Double.valueOf(translatorX));
+    public Point4D translateX(final Integer translatorX) {
+        return translateX(Double.valueOf(translatorX));
     }
 
     @Override
-    public Point4D transLateX(final Double translatorX) {
+    public Point4D translateX(final Double translatorX) {
         return new Point4D((Double)_1,(Double) _2,(Double) _3, translatorX);
     }
 
     @Override
-    public Point4D transLateX(final String translatorX) {
-        return transLateX(Double.valueOf(translatorX));
+    public Point4D translateX(final String translatorX) {
+        return translateX(Double.valueOf(translatorX));
     }
 
 

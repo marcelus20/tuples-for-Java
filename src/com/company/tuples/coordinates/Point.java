@@ -18,11 +18,11 @@ public interface Point {
 
 
 
-    Point transLateX(final Integer translatorX);
+    Point translateX(final Integer translatorX);
 
-    Point transLateX(final String translatorX);
+    Point translateX(final String translatorX);
 
-    Point transLateX(final Double translatorX);
+    Point translateX(final Double translatorX);
 
 
 

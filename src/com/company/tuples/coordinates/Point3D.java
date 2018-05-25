@@ -58,18 +58,18 @@ public class Point3D extends TupleOf3 implements Point {
 
 
     @Override
-    public Point3D transLateX(final Integer translatorX) {
-        return transLateX(Double.valueOf(translatorX));
+    public Point3D translateX(final Integer translatorX) {
+        return translateX(Double.valueOf(translatorX));
     }
 
     @Override
-    public Point3D transLateX(final Double translatorX) {
+    public Point3D translateX(final Double translatorX) {
         return new Point3D((Double)_1+translatorX, (Double)_2, (Double)_3);
     }
 
     @Override
-    public Point3D transLateX(final String translatorX) {
-        return transLateX(Double.valueOf(translatorX));
+    public Point3D translateX(final String translatorX) {
+        return translateX(Double.valueOf(translatorX));
     }
 
 

@@ -70,18 +70,18 @@ public class Point2D extends TupleOf2  implements Point{
     //THE THREE OVERLOADED TRANNSLATE X METHODS POINTS TO THE MIDDLE ONE (THE DOUBLE TYPED PARAMETER)
 
     @Override
-    public Point2D transLateX(final Integer translatorX) {
-        return transLateX(Double.valueOf(translatorX));
+    public Point2D translateX(final Integer translatorX) {
+        return translateX(Double.valueOf(translatorX));
     }
 
     @Override
-    public Point2D transLateX(final Double translatorX) {
+    public Point2D translateX(final Double translatorX) {
         return new Point2D(((Double)_1)+translatorX, (Double)_2);
     }
 
     @Override
-    public Point2D transLateX(final String translatorX) {
-        return transLateX(Double.valueOf(translatorX));
+    public Point2D translateX(final String translatorX) {
+        return translateX(Double.valueOf(translatorX));
     }
 
 
