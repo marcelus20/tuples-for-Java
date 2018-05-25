@@ -46,74 +46,93 @@ public class Point3D extends TupleOf3 implements Point {
 
 
     @Override
-    public Point3D scalePoint(Double scaler) {
+    public Point3D scalePointBy(final Double scaler) {
         return new Point3D((Double)_1*scaler, (Double)_2*scaler, (Double)_3*scaler);
     }
 
     @Override
-    public Point3D scalePoint(Integer scaler) {
-        return new Point3D((Double)_1*scaler, (Double)_2*scaler, (Double)_3*scaler);
+    public Point3D scalePointBy(final Integer scaler) {
+        return scalePointBy(Double.valueOf(scaler));
     }
 
 
 
     @Override
-    public Point3D transLateX(Integer translatorX) {
+    public Point3D transLateX(final Integer translatorX) {
+        return transLateX(Double.valueOf(translatorX));
+    }
+
+    @Override
+    public Point3D transLateX(final Double translatorX) {
         return new Point3D((Double)_1+translatorX, (Double)_2, (Double)_3);
     }
 
     @Override
-    public Point3D translateY(Integer translatorY) {
+    public Point3D transLateX(final String translatorX) {
+        return transLateX(Double.valueOf(translatorX));
+    }
+
+
+
+
+
+    @Override
+    public Point3D translateY(final Integer translatorY) {
+        return translateY(Double.valueOf(translatorY));
+    }
+
+    @Override
+    public Point3D translateY(final Double translatorY) {
         return new Point3D((Double)_1, (Double)_2+translatorY, (Double)_3);
     }
 
     @Override
-    public Point3D translateZ(Integer translatorZ) {
-        return new Point3D((Double)_1, (Double)_2, (Double)_3+Double.valueOf(translatorZ));
+    public Point3D translateY(final String translatorY) {
+        return translateY(Double.valueOf(translatorY));
+    }
+
+
+    /**
+     * THIRD PARAMETER TRANSLATOR OVERLOADED METHODS
+     * @param translatorZ <- the third parameter of a Point3D
+     * @return {Point3D}
+     */
+
+    @Override
+    public Point3D translateZ(final Integer translatorZ) {
+        return translateZ(Double.valueOf(translatorZ));
     }
 
     @Override
-    public Point4D translateA(Integer translatorA) {
-        return  Point4D.point4D((Double)_1,(Double) _2,(Double) _3, Double.valueOf(translatorA));
-    }
-
-    @Override
-    public Point3D transLateX(Double translatorX) {
-        return new Point3D((Double)_1+translatorX, (Double)_2, (Double)_3);
-    }
-
-    @Override
-    public Point3D translateY(Double translatorY) {
-        return new Point3D((Double)_1, (Double)_2+translatorY, (Double)_3);
-    }
-
-    @Override
-    public Point3D translateZ(Double translatorZ) {
+    public Point3D translateZ(final Double translatorZ) {
         return new Point3D((Double)_1, (Double)_2, (Double)_3+translatorZ);
     }
 
     @Override
-    public Point4D translateA(Double translatorA) {
+    public Point3D translateZ(final String translatorZ) {
+        return translateZ(Double.valueOf(translatorZ));
+    }
+
+
+    /**
+     * Updating point to a 4D point: just translate the parameter A, that does not exists yet
+     * @param translatorA <- the fourth parameter
+     * @return {Point4D}
+     */
+
+
+    @Override
+    public Point4D translateA(final Integer translatorA) {
+        return  translateA(Double.valueOf(translatorA));
+    }
+
+    @Override
+    public Point4D translateA(final Double translatorA) {
         return  Point4D.point4D((Double)_1,(Double) _2,(Double) _3, translatorA);
     }
 
     @Override
-    public Point3D transLateX(String translatorX) {
-        return new Point3D((Double)_1+Double.parseDouble(translatorX), (Double)_2, (Double)_3);
-    }
-
-    @Override
-    public Point3D translateY(String translatorY) {
-        return new Point3D((Double)_1, (Double)_2+Double.parseDouble(translatorY), (Double)_3);
-    }
-
-    @Override
-    public Point3D translateZ(String translatorZ) {
-        return new Point3D((Double)_1, (Double)_2, (Double)_3+Double.parseDouble(translatorZ));
-    }
-
-    @Override
-    public Point4D translateA(String translatorA) {
-        return  Point4D.point4D((Double)_1,(Double) _2,(Double) _3, Double.valueOf(translatorA));
+    public Point4D translateA(final String translatorA) {
+        return  translateA(Double.valueOf(translatorA));
     }
 }

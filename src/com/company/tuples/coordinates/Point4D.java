@@ -53,72 +53,89 @@ public class Point4D extends TupleOf4 implements Point {
 
 
     @Override
-    public Point4D scalePoint(Double scaler) {
+    public Point4D scalePointBy(final Double scaler) {
         return new Point4D((Double)_1*scaler, (Double)_2*scaler, (Double)_3*scaler, (Double) _4*scaler);
     }
 
     @Override
-    public Point4D scalePoint(Integer scaler) {
-        return new Point4D((Double)_1*scaler, (Double)_2*scaler, (Double)_3*scaler, (Double) _4*scaler);
+    public Point4D scalePointBy(final Integer scaler) {
+        return scalePointBy(Double.valueOf(scaler));
+    }
+
+
+
+
+
+
+    @Override
+    public Point4D transLateX(final Integer translatorX) {
+        return transLateX(Double.valueOf(translatorX));
     }
 
     @Override
-    public Point4D transLateX(Integer translatorX) {
-        return new Point4D((Double) _1+translatorX,(Double) _2, (Double)_3,(Double) _4);
+    public Point4D transLateX(final Double translatorX) {
+        return transLateX(translatorX);
     }
 
     @Override
-    public Point4D translateY(Integer translatorY) {
+    public Point4D transLateX(final String translatorX) {
+        return transLateX(Double.valueOf(translatorX));
+    }
+
+
+
+
+
+    @Override
+    public Point4D translateY(final Integer translatorY) {
+        return translateY(Double.valueOf(translatorY));
+    }
+
+    @Override
+    public Point4D translateY(final Double translatorY) {
         return new Point4D((Double) _1,(Double) _2+translatorY, (Double)_3,(Double) _4);
     }
 
     @Override
-    public Point4D translateZ(Integer translatorZ) {
+    public Point4D translateY(final String translatorY) {
+        return translateY(Double.valueOf(translatorY));
+    }
+
+
+
+
+
+    @Override
+    public Point4D translateZ(final Integer translatorZ) {
+        return translateZ(Double.valueOf(translatorZ));
+    }
+
+    @Override
+    public Point4D translateZ(final Double translatorZ) {
         return new Point4D((Double) _1,(Double) _2, (Double)_3+translatorZ,(Double) _4);
     }
 
     @Override
-    public Point4D translateA(Integer translatorA) {
+    public Point4D translateZ(final String translatorZ) {
+        return translateZ(Double.valueOf(translatorZ));
+    }
+
+
+
+
+
+    @Override
+    public Point4D translateA(final Integer translatorA) {
+        return translateA(Double.valueOf(translatorA));
+    }
+
+    @Override
+    public Point4D translateA(final Double translatorA) {
         return new Point4D((Double)_1,(Double) _2, (Double)_3,(Double) _4+translatorA);
     }
 
     @Override
-    public Point4D transLateX(Double translatorX) {
-        return new Point4D((Double) _1+translatorX,(Double) _2, (Double)_3,(Double) _4);
-    }
-
-    @Override
-    public Point4D translateY(Double translatorY) {
-        return new Point4D((Double) _1,(Double) _2+translatorY, (Double)_3,(Double) _4);
-    }
-
-    @Override
-    public Point4D translateZ(Double translatorZ) {
-        return new Point4D((Double) _1,(Double) _2, (Double)_3+translatorZ,(Double) _4);
-    }
-
-    @Override
-    public Point4D translateA(Double translatorA) {
-        return new Point4D((Double)_1,(Double) _2, (Double)_3,(Double) _4+translatorA);
-    }
-
-    @Override
-    public Point4D transLateX(String translatorX) {
-        return new Point4D((Double) _1+Double.valueOf(translatorX), (Double) _2, (Double)_3,(Double) _4);
-    }
-
-    @Override
-    public Point4D translateY(String translatorY) {
-        return new Point4D((Double) _1,(Double) _2+Double.valueOf(translatorY), (Double)_3,(Double) _4);
-    }
-
-    @Override
-    public Point4D translateZ(String translatorZ) {
-        return new Point4D((Double) _1,(Double) _2, (Double)_3+Double.valueOf(translatorZ),(Double) _4);
-    }
-
-    @Override
-    public Point4D translateA(String translatorA) {
-        return new Point4D((Double)_1,(Double) _2, (Double)_3,(Double) _4+Double.valueOf(translatorA));
+    public Point4D translateA(final String translatorA) {
+        return translateA(Double.valueOf(translatorA));
     }
 }
