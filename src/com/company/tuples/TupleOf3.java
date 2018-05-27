@@ -1,5 +1,7 @@
 package com.company.tuples;
 
+import java.util.Objects;
+
 public class TupleOf3 <B> extends TupleOf2 {
     protected final B _3;
 
@@ -54,5 +56,19 @@ public class TupleOf3 <B> extends TupleOf2 {
     @Override
     public String toString() {
         return "("+_1+", "+_2+", "+_3+")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TupleOf3<?> tupleOf3 = (TupleOf3<?>) o;
+        return Objects.equals(_3, tupleOf3._3);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), _3);
     }
 }
