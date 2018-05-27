@@ -1,5 +1,7 @@
 package com.company.tuples;
 
+import java.util.Objects;
+
 /**
  * The porpouse of using a Tuple class is to fit the need of using tuples, very common in functional programming languages
  * Java lacks Tuple, cause java is not a functional programming language. Due to this lack, I will be creating a Tuple
@@ -38,5 +40,19 @@ public abstract class Tuple <T, G> {
     @Override
     public String toString() {
         return "("+_1+", "+_2+")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tuple<?, ?> tuple = (Tuple<?, ?>) o;
+        return Objects.equals(_1, tuple._1) &&
+                Objects.equals(_2, tuple._2);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(_1, _2);
     }
 }
