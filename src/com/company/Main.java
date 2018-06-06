@@ -8,6 +8,9 @@ import com.company.tuples.coordinates.Point2D;
 import com.company.tuples.coordinates.Point3D;
 import com.company.tuples.coordinates.Point4D;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.company.tuples.TupleOf2.tupleOf2;
 import static com.company.tuples.TupleOf3.tupleOf3;
 import static com.company.tuples.TupleOf4.tupleOf4;
@@ -103,6 +106,35 @@ public class Main {
         System.out.println(quadraticEquation(-3.0,-4.0,8.0)); // returns a tuple of x1 and x2
 
 
+        /**
+         * Performing tests with the zip functions by packing with tuples.
+         *
+         *
+         */
+        List<Integer> x = new ArrayList<>();//FIRST LIST
+        List<String>  y = new ArrayList<>();//SECOND LIST
+        List<Boolean> z = new ArrayList<>();//THIRD LIST
+        List<Character> a = new ArrayList<>(); // FORTH LISTA
+
+
+        //ADDING ELEMENTS TO THE LISTS
+        x.add(0);
+        x.add(1);
+        x.add(2);
+        y.add("Kleber");
+        y.add("Felipe");
+        y.add("Sara");
+        z.add(true);
+        z.add(false);
+        z.add(false);
+        a.add('m');
+        a.add('m');
+        a.add('f');
+
+        //ZIPING THE FOUR ARRAYS:
+        System.out.println(zip(x, y, z, a));
+        //OUTPUT SHOULD BE: [(0, Kleber, true, m), (1, Felipe, false, m), (2, Sara, false, f)]
+
 
     }
 
@@ -117,6 +149,49 @@ public class Main {
         x2 = (-termB+Math.pow(delta, 0.5))/(2*termA);
 
         return (TupleOf2) tupleOf2(x1, x2);
+    }
+
+
+
+
+
+    public static <T, G> List<TupleOf2> zip (final List<T> argA, final List<G> argB){
+
+        Integer index = 0;
+        List<TupleOf2> zipped = new ArrayList<>();
+        for(T arg : argA){
+
+            zipped.add(tupleOf2(arg, argB.get(index)));
+            index++;
+        }
+
+        return zipped;
+    }
+
+    public static <T, G, F> List<TupleOf3> zip (final List<T> argA, final List<G> argB, final List<F> argC){
+
+        Integer index = 0;
+        List<TupleOf3> zipped = new ArrayList<>();
+        for(T arg : argA){
+
+            zipped.add(tupleOf3(arg, argB.get(index), argC.get(index)));
+            index++;
+        }
+
+        return zipped;
+    }
+
+    public static <T, G, F, E> List<TupleOf3> zip (final List<T> argA, final List<G> argB, final List<F> argC, List<E> argE){
+
+        Integer index = 0;
+        List<TupleOf3> zipped = new ArrayList<>();
+        for(T arg : argA){
+
+            zipped.add(tupleOf4(arg, argB.get(index), argC.get(index), argE.get(index)));
+            index++;
+        }
+
+        return zipped;
     }
 
 
