@@ -1,8 +1,8 @@
-package org.marcelus.tuple;
+package org.marcelus.tuples.cardinaltuples;
 
 import java.util.Objects;
 
-public class TupleOf3 <B> extends TupleOf2 {
+public class TupleOf3<B> extends TupleOf2 {
     protected final B _3;
 
     protected <T, G, A> TupleOf3(T _1, G _2, B _3) {
@@ -24,7 +24,7 @@ public class TupleOf3 <B> extends TupleOf2 {
      * @return
      */
 
-    public static <T, G, B>TupleOf3 tupleOf3(T _1, G _2, B _3){
+    public static <T, G, B> TupleOf3 tupleOf3(T _1, G _2, B _3){
         return new TupleOf3(_1, _2, _3);
     }
 
@@ -38,7 +38,7 @@ public class TupleOf3 <B> extends TupleOf2 {
      * @return
      */
 
-    public static <T, G, B>TupleOf3 tupleOf3(TupleOf2 tuple, B _3){
+    public static <T, G, B> TupleOf3 tupleOf3(TupleOf2 tuple, B _3){
         T _1 = (T) tuple.get_1();
         G _2 = (G) tuple.get_2();
         return new TupleOf3(_1, _2, _3);
@@ -55,7 +55,7 @@ public class TupleOf3 <B> extends TupleOf2 {
 
     @Override
     public String toString() {
-        return "("+_1+", "+_2+", "+_3+")";
+        return String.format("(%s, %s, %s)", _1, _2, _3);
     }
 
     @Override

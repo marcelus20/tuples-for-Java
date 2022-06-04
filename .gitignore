@@ -1,3 +1,5 @@
 .idea
 target
 tuples-for-Java.iml
+cardinal-tuples/com.marcelus.tuples.cardinal-tuples.iml
+dynamic-tuples/com.marcelus.tuples.dynamic-tuples.iml

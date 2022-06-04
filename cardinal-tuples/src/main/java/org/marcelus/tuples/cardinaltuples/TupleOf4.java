@@ -1,8 +1,8 @@
-package org.marcelus.tuple;
+package org.marcelus.tuples.cardinaltuples;
 
 import java.util.Objects;
 
-public class TupleOf4<E> extends TupleOf3{
+public class TupleOf4<E> extends TupleOf3 {
 
     protected final Object _4;
 
@@ -66,7 +66,7 @@ public class TupleOf4<E> extends TupleOf3{
 
     @Override
     public String toString() {
-        return "("+_1+", "+_2+", "+_3+", "+_4+")";
+        return String.format("(%s, %s, %s, %s)", _1, _2, _3, _4);
     }
 
     @Override
@@ -74,8 +74,8 @@ public class TupleOf4<E> extends TupleOf3{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        TupleOf4<?> tupleOf4 = (TupleOf4<?>) o;
-        return Objects.equals(_4, tupleOf4._4);
+        TupleOf4<?> cardinalTupleOf4 = (TupleOf4<?>) o;
+        return Objects.equals(_4, cardinalTupleOf4._4);
     }
 
     @Override

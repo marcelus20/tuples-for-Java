@@ -1,11 +1,11 @@
-package org.marcelus.tuple;
+package org.marcelus.tuples.cardinaltuples;
 
-import junit.framework.TestCase;
 import org.junit.Test;
+import org.marcelus.tuples.cardinaltuples.TupleOf3;
 
 import static org.junit.Assert.assertEquals;
 
-public class TupleOf3Test{
+public class TupleOf3Test {
 
     @Test
     public void tupleOf3ShouldInstantiateCorrectly(){

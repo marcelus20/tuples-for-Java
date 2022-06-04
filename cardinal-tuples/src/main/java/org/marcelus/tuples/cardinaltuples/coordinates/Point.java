@@ -1,4 +1,4 @@
-package org.marcelus.tuple.coordinates;
+package org.marcelus.tuples.cardinaltuples.coordinates;
 
 /**
  * THis is just a list of the methods that the any Point will have.

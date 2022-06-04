@@ -1,4 +1,4 @@
-package org.marcelus.tuple;
+package org.marcelus.tuples.cardinaltuples;
 
 import java.util.Objects;
 
@@ -10,7 +10,7 @@ import java.util.Objects;
  * Tuples are like immutable lists
  */
 
-public abstract class Tuple <T, G> {
+public abstract class CardinalTuple<T, G> {
 
     /**
      * the T type and G type represent the generic wrapper types
@@ -20,7 +20,7 @@ public abstract class Tuple <T, G> {
     protected final T _1;
     protected final G _2;
 
-    protected Tuple(T _1, G _2) {
+    protected CardinalTuple(T _1, G _2) {
         this._1 = _1;
         this._2 = _2;
     }
@@ -39,16 +39,16 @@ public abstract class Tuple <T, G> {
 
     @Override
     public String toString() {
-        return "("+_1+", "+_2+")";
+        return String.format("(%s, %s)", _1, _2);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tuple<?, ?> tuple = (Tuple<?, ?>) o;
-        return Objects.equals(_1, tuple._1) &&
-                Objects.equals(_2, tuple._2);
+        CardinalTuple<?, ?> cardinalTuple = (CardinalTuple<?, ?>) o;
+        return Objects.equals(_1, cardinalTuple._1) &&
+                Objects.equals(_2, cardinalTuple._2);
     }
 
     @Override

@@ -5,7 +5,7 @@ As java lacks the use of tuples, this project shows how to build and create tupl
 <h3>The use of tuples</h3>
 <p backgraound="silver">
   Tuples can be used when you feel the need of using immutable lists that may contain different types of variable,
-  for instance, you can have the a tuple of an Integer as first element and String as second element.
+  for instance, you can have the a cardinalTuple of an Integer as first element and String as second element.
 <p>
 
 <h3>How to make an static import</h3>

@@ -1,6 +1,6 @@
-package org.marcelus.tuple.coordinates;
+package org.marcelus.tuples.cardinaltuples.coordinates;
 
-import org.marcelus.tuple.TupleOf3;
+import org.marcelus.tuples.cardinaltuples.TupleOf3;
 
 public class Point3D extends TupleOf3 implements Point {
 

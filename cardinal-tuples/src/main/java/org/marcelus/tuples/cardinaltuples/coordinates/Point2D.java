@@ -1,7 +1,7 @@
-package org.marcelus.tuple.coordinates;
+package org.marcelus.tuples.cardinaltuples.coordinates;
 
 
-import org.marcelus.tuple.TupleOf2;
+import org.marcelus.tuples.cardinaltuples.TupleOf2;
 
 /**
  * THIS CLASS represents a 2D coordinate
@@ -138,7 +138,7 @@ public class Point2D extends TupleOf2 implements Point{
 
 
     @Override
-    public  Point4D translateA(final Integer translatorA) {
+    public Point4D translateA(final Integer translatorA) {
         return translateA(Double.valueOf(translatorA));
     }
 
