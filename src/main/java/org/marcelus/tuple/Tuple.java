@@ -1,4 +1,4 @@
-package com.company.tuples;
+package org.marcelus.tuple;
 
 import java.util.Objects;
 

@@ -1,13 +1,13 @@
-package com.company.tuples.coordinates;
+package org.marcelus.tuple.coordinates;
 
-import com.company.tuples.TupleOf2;
 
+import org.marcelus.tuple.TupleOf2;
 
 /**
  * THIS CLASS represents a 2D coordinate
  */
 
-public class Point2D extends TupleOf2  implements Point{
+public class Point2D extends TupleOf2 implements Point{
 
 
     /**

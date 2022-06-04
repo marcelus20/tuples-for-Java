@@ -1,4 +1,4 @@
-package com.company.tuples;
+package org.marcelus.tuple;
 
 public class TupleOf2 <T, G> extends Tuple  {
 

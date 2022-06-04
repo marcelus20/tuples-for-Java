@@ -1,6 +1,7 @@
-package com.company.tuples.coordinates;
+package org.marcelus.tuple.coordinates;
 
-import com.company.tuples.TupleOf4;
+
+import org.marcelus.tuple.TupleOf4;
 
 public class Point4D extends TupleOf4 implements Point {
 
