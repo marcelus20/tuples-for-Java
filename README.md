@@ -1,49 +1,71 @@
-# tuples-coordinates-functionalProg
-As java lacks the use of tuples, this project shows how to build and create tuples in java and how you can create coordinates out of the use of tuples
+# Tuples
+
+## Building the project
+```bash
+mvn clean install
+```
+
+## Modules
+### Cardinal Tuples
+They are tuples with restricted number of elements and type-enforced elements. You can add up to 4 elements to it and the following classes corresponds to the number of elements allowed in it:
+
+* org.marcelus.tuples.cardinaltuples.TupleOf2
+* org.marcelus.tuples.cardinaltuples.TupleOf3
+* org.marcelus.tuples.cardinaltuples.TupleOf4
+
+#### Instantiating Cardinal Tuples 
+You can use the factory method: 
+```java
+import org.marcelus.tuples.cardinaltuples.TupleOf2;
+import org.marcelus.tuples.cardinaltuples.TupleOf3;
+import org.marcelus.tuples.cardinaltuples.TupleOf4;
+
+public class Main(){
+    
+    public static void main(String... args){
+        /**
+         * Except for the TupleOf2, you only need to specify the generic type
+         * of the last element in the tuple. The others will be inferred
+         */
+        TupleOf2<String, Integer> tupleOf2 = TupleOf2.tupleOf2("Jane", 20);
+        TupleOf3<Boolean> tupleOf3 = TupleOf3.tupleOf3("Jane", 20, false);
+        TupleOf4<Integer> tupleOf4 = TupleOf4.tupleOf4("Jane", 20, false, 0);
+        
+        // Accessing elements:
+        // Accessing the second element of tupleOf2
+        tupleOf2.get_2();
+        
+        // Accessing the second element of tupleOf3
+        tupleOf3.get_3();
+        
+        // Accessing the first element of tupleOf2, tupleOf3, tupleOf4
+        tupleOf2.get_1();
+        tupleOf3.get_1();
+        tupleOf4.get_1();
+        
+    }
+}
+```
+
+### Dynamic Tuples
+They are tuples with unlimited amount of elements in it. Its datastruture is composed of an array of objects, however 
+it's immutability is enforced once the tuple is instantiated. 
+
+```java
+import org.marcelus.tuples.dynamictuples.Tuple;
 
 
-<h3>The use of tuples</h3>
-<p backgraound="silver">
-  Tuples can be used when you feel the need of using immutable lists that may contain different types of variable,
-  for instance, you can have the a cardinalTuple of an Integer as first element and String as second element.
-<p>
+public class Main(){
+    
+    public static void main(String... args){
 
-<h3>How to make an static import</h3>
-
-Supposing your class is at the com.jetbrains package:
-<h4>Using static importation:</h4>
-<code>import static com.company.tuples.TupleOf2.tupleOf2;</code>
-
-<h4>Using regular importation:</h4>
-<code>import com.company.tuples.TupleOf2</code>
-
-<h3>How to initialize</h3>
-<h4>Using static importation:</h4>
-<code>Tuple myTuple = tupleOf2("Value", 3.5)</code>
-
-<h4>Using regular importation:</h4>
-<code>Tuple myTuple = TupleOf2.tupleOf2("Age", 28)</code>
-
-<h3> Coordinates</h3>
-<p backgraound="silver">
-  The Points are classes that extends Tuples. You can create up to 4D coordinate using Points classes:
-<p>
-
-<h3>How to make an static import of Points</h3>
-
-Supposing your class is at the com.jetbrains package:
-<h4>Using static importation:</h4>
-<code>import static com.company.tuples.coordinates.Point3D.point3D;</code>
-
-<h4>Using regular importation:</h4>
-<code>import static com.company.tuples.coordinates.Point3D</code>
-
-<h3>How to initialize</h3>
-<h4>Using static importation:</h4>
-<code>Point3D myCoordinate = point3D(3.0, 3.5, -1.8)</code>
-
-<h4>Using regular importation:</h4>
-<code>Point3D myTuple = Point3D.point3D(2.4, 28.8, 5.0)</code><br/>
+        //Instantiating
+        Tuple tuple = new Tuple("John", "Doe", 20, false, 1.73);
+    
+        // Geting elements
+        tuple.get(2);
+    }
+}
+```
 
 
-elements can be many types, Strings, Booleans, Point3D, it does not really matter, they are all generic type
