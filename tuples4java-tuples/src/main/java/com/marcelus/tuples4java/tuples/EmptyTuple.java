@@ -19,4 +19,23 @@ public class EmptyTuple implements Tuple{
     public final Integer size() {
         return SIZE;
     }
+
+    /*
+     * Equals Hashcode and toString
+     */
+    @Override
+    public boolean equals(Object o) {
+        // All empty tuples will be equal to each other.
+        return o instanceof EmptyTuple;
+    }
+
+    @Override
+    public int hashCode() {
+        return EmptyTuple.class.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "()";
+    }
 }

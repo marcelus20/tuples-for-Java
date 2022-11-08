@@ -3,8 +3,14 @@ package com.marcelus.tuples4java.tuples;
 import com.marcelus.tuples4java.tuples.ordinals.First;
 import com.marcelus.tuples4java.tuples.ordinals.Second;
 import com.marcelus.tuples4java.tuples.ordinals.Third;
+import com.marcelus.validators.ArrayValidator;
+import com.marcelus.validators.ListValidator;
+import com.marcelus.validators.NullValidator;
+import io.vavr.control.Either;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+
+import java.util.List;
 
 public class Triplet <A, B, C> implements Tuple, First<A>, Second<B>, Third<C> {
 
@@ -22,6 +28,28 @@ public class Triplet <A, B, C> implements Tuple, First<A>, Second<B>, Third<C> {
 
     public static <A, B, C> Triplet<A, B, C> of(final A first, final B second, final C third) {
         return new Triplet<>(first, second, third);
+    }
+
+    public static <T> Either<EmptyTuple, Triplet<T, T, T>> fromArray(final T[] array) {
+        final Either<Object[], T[]> either = NullValidator.notNull(array)
+                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, SIZE));
+        if(either.isLeft()){
+            return Either.left(EmptyTuple.newInstance());
+        }else{
+            final T[] validatedArray = either.get();
+            return Either.right(new Triplet<>(validatedArray[0], validatedArray[1], validatedArray[2]));
+        }
+    }
+
+    public static <T> Either<EmptyTuple, Triplet<T, T, T>> fromList(final List<T> list){
+        final Either<List<T>, List<T>> either = NullValidator.notNull(list)
+                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, SIZE));
+        if(either.isLeft()){
+            return Either.left(EmptyTuple.newInstance());
+        }else{
+            final List<T> validatedList = either.get();
+            return Either.right(new Triplet<>(validatedList.get(0), validatedList.get(1), validatedList.get(2)));
+        }
     }
 
     @Override
