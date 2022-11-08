@@ -59,4 +59,30 @@ class PairTest {
         Assertions.assertTrue(either.isLeft());
     }
 
+    @Test
+    void testingWithFirstScenario(){
+        // Given
+        Pair<String, Integer> pair = Pair.of("John", 25); ;
+
+        // When
+        Pair<String, Integer> modifiedPair = pair.withFirst("James");
+
+
+        // Then
+        Assertions.assertEquals("(James, 25)", modifiedPair.toString());
+    }
+
+    @Test
+    void testingWithSecondScenario(){
+        // Given
+        Pair<String, Integer> pair = Pair.of("John", 25); ;
+
+        // When
+        Pair<String, Integer> modifiedPair = pair.withSecond(26);
+
+
+        // Then
+        Assertions.assertEquals("(John, 26)", modifiedPair.toString());
+    }
+
 }

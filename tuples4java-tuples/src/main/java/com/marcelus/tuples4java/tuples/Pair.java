@@ -52,22 +52,22 @@ public class Pair <A, B> implements Tuple, First<A>, Second<B> {
 
 
     @Override
-    public A first() {
+    public final A first() {
         return first;
     }
 
     @Override
-    public Pair<A, B> withFirst(A first) {
+    public final Pair<A, B> withFirst(final A first) {
         return new Pair<>(first, second);
     }
 
     @Override
-    public B second() {
+    public final B second() {
         return second;
     }
 
     @Override
-    public Pair<A, B> withSecond(B second) {
+    public final Pair<A, B> withSecond(final B second) {
         return new Pair<>(first, second);
     }
 
@@ -96,11 +96,11 @@ public class Pair <A, B> implements Tuple, First<A>, Second<B> {
 
     @Override
     public String toString() {
-        return String.format("(%s, %s)", first, second);
+        return String.format("(%s, %s)", Tuple.wrapIfContainsComas(first), Tuple.wrapIfContainsComas(second));
     }
 
     @Override
-    public Integer size() {
+    public final Integer size() {
         return SIZE;
     }
 }

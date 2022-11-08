@@ -9,6 +9,8 @@ import com.marcelus.tuples4java.tuples.ordinals.Second;
 import com.marcelus.tuples4java.tuples.ordinals.Seventh;
 import com.marcelus.tuples4java.tuples.ordinals.Sixth;
 import com.marcelus.tuples4java.tuples.ordinals.Third;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E>, Sixth<F>,
         Seventh<G>, Eighth<H> {
@@ -22,7 +24,8 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
     private final G seventh;
     private final H eighth;
 
-    private Octet(A first, B second, C third, D fourth, E fifth, F sixth, G seventh, H eighth) {
+    private Octet(final A first, final B second, final C third, final D fourth, final E fifth, final F sixth,
+                  final G seventh, final H eighth) {
         this.first = first;
         this.second = second;
         this.third = third;
@@ -33,83 +36,120 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
         this.eighth = eighth;
     }
 
+    public static <A, B, C, D, E, F, G, H> Octet<A, B, C, D, E, F, G, H>
+    of(final A first, final B second, final C third, final D fourth, final E fifth, final F sixth, final G seventh,
+       final H eighth) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
+    }
+
     @Override
-    public H eighth() {
+    public final H eighth() {
         return eighth;
     }
 
     @Override
-    public Octet <A, B, C, D, E, F, G, H> withEighth(H eighth) {
+    public final Octet <A, B, C, D, E, F, G, H> withEighth(final H eighth) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
-    public E fifth() {
+    public final E fifth() {
         return fifth;
     }
 
     @Override
-    public Octet <A, B, C, D, E, F, G, H> withFifth(E fifth) {
+    public final Octet <A, B, C, D, E, F, G, H> withFifth(final E fifth) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
-    public A first() {
+    public final A first() {
         return first;
     }
 
     @Override
-    public Octet <A, B, C, D, E, F, G, H> withFirst(A first) {
+    public final Octet <A, B, C, D, E, F, G, H> withFirst(final A first) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
-    public D fourth() {
+    public final D fourth() {
         return fourth;
     }
 
     @Override
-    public Octet <A, B, C, D, E, F, G, H> withFourth(D fourth) {
+    public final Octet <A, B, C, D, E, F, G, H> withFourth(final D fourth) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
-    public B second() {
+    public final B second() {
         return second;
     }
 
     @Override
-    public Octet <A, B, C, D, E, F, G, H> withSecond(B second) {
+    public final Octet <A, B, C, D, E, F, G, H> withSecond(final B second) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
-    public G seventh() {
+    public final G seventh() {
         return seventh;
     }
 
     @Override
-    public Octet <A, B, C, D, E, F, G, H> withSeventh(G seventh) {
+    public final Octet <A, B, C, D, E, F, G, H> withSeventh(final G seventh) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
-    public F sixth() {
+    public final F sixth() {
         return sixth;
     }
 
     @Override
-    public Sixth<F> withSixth(F sixth) {
+    public final Octet<A, B, C, D, E, F, G, H> withSixth(final F sixth) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
-    public C third() {
+    public final C third() {
         return third;
     }
 
     @Override
-    public Third<C> withThird(C third) {
+    public final Octet<A, B, C, D, E, F, G, H> withThird(final C third) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
+    }
+
+    /*
+     * hashcode equals and toString
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Octet<?, ?, ?, ?, ?, ?, ?, ?> octet = (Octet<?, ?, ?, ?, ?, ?, ?, ?>) o;
+
+        return new EqualsBuilder().append(first, octet.first).append(second, octet.second).append(third, octet.third)
+                .append(fourth, octet.fourth).append(fifth, octet.fifth).append(sixth, octet.sixth)
+                .append(seventh, octet.seventh).append(eighth, octet.eighth).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37).append(first).append(second)
+                .append(third).append(fourth).append(fifth).append(sixth).append(seventh).append(eighth).toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("(%s, %s, %s, %s, %s, %s, %s, %s)", Tuple.wrapIfContainsComas(first),
+                Tuple.wrapIfContainsComas(second), Tuple.wrapIfContainsComas(third), Tuple.wrapIfContainsComas(fourth),
+                Tuple.wrapIfContainsComas(fifth), Tuple.wrapIfContainsComas(sixth), Tuple.wrapIfContainsComas(seventh),
+                Tuple.wrapIfContainsComas(eighth));
     }
 }

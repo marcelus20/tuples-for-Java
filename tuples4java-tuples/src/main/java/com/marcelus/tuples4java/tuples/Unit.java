@@ -85,6 +85,6 @@ public class Unit<A> implements Tuple, First<A> {
 
     @Override
     public String toString() {
-        return String.format("(%s)", first);
+        return String.format("(%s)", Tuple.wrapIfContainsComas(first));
     }
 }

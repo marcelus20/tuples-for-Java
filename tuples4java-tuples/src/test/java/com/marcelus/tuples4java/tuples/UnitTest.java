@@ -96,4 +96,17 @@ class UnitTest{
         Assertions.assertEquals(exceptedString, unit.toString());
     }
 
+    @Test
+    void testingWithFirstScenario(){
+        // Given
+        Unit<String> unit = Unit.of("foo"); ;
+
+        // When
+        Unit<String> modifiedUnit = unit.withFirst("bar");
+
+
+        // Then
+        Assertions.assertEquals("bar", modifiedUnit.first());
+    }
+
 }

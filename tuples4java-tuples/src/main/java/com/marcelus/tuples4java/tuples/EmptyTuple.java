@@ -16,7 +16,7 @@ public class EmptyTuple implements Tuple{
     }
 
     @Override
-    public Integer size() {
+    public final Integer size() {
         return SIZE;
     }
 }
