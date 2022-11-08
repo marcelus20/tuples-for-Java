@@ -67,7 +67,7 @@ class TripletTest {
 
     @ParameterizedTest
     @NullSource
-    void fromArrayNullScenario(Boolean[] array){
+    void fromArrayNullScenario(final Boolean[] array){
         // When
         final Either<EmptyTuple, Triplet<Boolean, Boolean, Boolean>> tripletEither = Triplet.fromArray(array);
 
@@ -113,7 +113,7 @@ class TripletTest {
 
     @ParameterizedTest
     @NullSource
-    void fromListNullScenario(List<Boolean> array){
+    void fromListNullScenario(final List<Boolean> array){
         // When
         final Either<EmptyTuple, Triplet<Boolean, Boolean, Boolean>> tripletEither = Triplet.fromList(array);
 
