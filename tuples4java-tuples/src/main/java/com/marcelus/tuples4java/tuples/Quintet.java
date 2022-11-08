@@ -1,6 +1,11 @@
 package com.marcelus.tuples4java.tuples;
 
-import com.marcelus.tuples4java.gettables.*;
+
+import com.marcelus.tuples4java.tuples.ordinals.Fifth;
+import com.marcelus.tuples4java.tuples.ordinals.First;
+import com.marcelus.tuples4java.tuples.ordinals.Fourth;
+import com.marcelus.tuples4java.tuples.ordinals.Second;
+import com.marcelus.tuples4java.tuples.ordinals.Third;
 
 public class Quintet<A, B, C, D, E> implements First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E> {
 
@@ -25,8 +30,18 @@ public class Quintet<A, B, C, D, E> implements First<A>, Second<B>, Third<C>, Fo
     }
 
     @Override
+    public Quintet<A, B, C, D, E> withFifth(E fifth) {
+        return new Quintet<>(first, second, third, fourth, fifth);
+    }
+
+    @Override
     public A first() {
         return first;
+    }
+
+    @Override
+    public Quintet<A, B, C, D, E> withFirst(A first) {
+        return new Quintet<>(first, second, third, fourth, fifth);
     }
 
     @Override
@@ -35,12 +50,27 @@ public class Quintet<A, B, C, D, E> implements First<A>, Second<B>, Third<C>, Fo
     }
 
     @Override
+    public Quintet<A, B, C, D, E> withFourth(D fourth) {
+        return new Quintet<>(first, second, third, fourth, fifth);
+    }
+
+    @Override
     public B second() {
         return second;
     }
 
     @Override
+    public Quintet<A, B, C, D, E> withSecond(B second) {
+        return new Quintet<>(first, second, third, fourth, fifth);
+    }
+
+    @Override
     public C third() {
         return third;
+    }
+
+    @Override
+    public Quintet<A, B, C, D, E> withThird(C third) {
+        return new Quintet<>(first, second, third, fourth, fifth);
     }
 }

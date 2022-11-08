@@ -5,12 +5,11 @@ import io.vavr.control.Either;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.security.InvalidParameterException;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class UnitTest{
+class UnitTest{
 
     @Test
     void unitSizeShouldAlwaysBe1(){
@@ -33,19 +32,19 @@ public class UnitTest{
         Unit<Integer> unit = Unit.fromArray(intArray).get();
 
         // Then
-        Assertions.assertEquals(intArray[0], unit.first());
+        Assertions.assertEquals(1, unit.first());
     }
 
     @Test
-    void unitFromArrayWillReturnEitherExceptionWhenArraySizeIsDifferentFrom1(){
+    void unitFromArrayWillReturnFailWhenArraySizeIsDifferentFrom1(){
         // Given
         Integer[] intArray = new Integer[0];
 
         // When
-        Either<Exception, Unit<Integer>> either = Unit.fromArray(intArray);
+        Either<EmptyTuple, Unit<Integer>> either = Unit.fromArray(intArray);
 
         // Then
-        Assertions.assertTrue(either.getLeft() instanceof InvalidParameterException);
+        Assertions.assertTrue(either.isLeft());
     }
 
     @Test
@@ -54,10 +53,10 @@ public class UnitTest{
         Integer[] intArray = null;
 
         // When
-        Either<Exception, Unit<Integer>> either = Unit.fromArray(intArray);
+        Either<EmptyTuple, Unit<Integer>> either = Unit.fromArray(intArray);
 
         // Then
-        Assertions.assertTrue(either.getLeft() instanceof InvalidParameterException);
+        Assertions.assertTrue(either.isLeft());
     }
 
     @Test
@@ -66,22 +65,22 @@ public class UnitTest{
         List<Boolean> list = Arrays.asList(true, true, false);
 
         // When
-        Either<Exception, Unit<Boolean>> either = Unit.fromList(list);
+        Either<EmptyTuple, Unit<Boolean>> either = Unit.fromList(list);
 
         // Then
-        Assertions.assertTrue(either.getLeft() instanceof InvalidParameterException);
+        Assertions.assertTrue(either.isLeft());
     }
 
     @Test
     void unitFromListWillReturnEitherExceptionWhenListIsNull(){
         // Given
-        List<Integer> intArray = null;
+        List<Integer> intList = null;
 
         // When
-        Either<Exception, Unit<Integer>> either = Unit.fromList(intArray);
+        Either<EmptyTuple, Unit<Integer>> either = Unit.fromList(intList);
 
         // Then
-        Assertions.assertTrue(either.getLeft() instanceof InvalidParameterException);
+        Assertions.assertTrue(either.isLeft());
     }
 
     @Test

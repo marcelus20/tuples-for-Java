@@ -1,9 +1,17 @@
 package com.marcelus.tuples4java.tuples;
 
-import com.marcelus.tuples4java.gettables.*;
+
+import com.marcelus.tuples4java.tuples.ordinals.Eighth;
+import com.marcelus.tuples4java.tuples.ordinals.Fifth;
+import com.marcelus.tuples4java.tuples.ordinals.First;
+import com.marcelus.tuples4java.tuples.ordinals.Fourth;
+import com.marcelus.tuples4java.tuples.ordinals.Second;
+import com.marcelus.tuples4java.tuples.ordinals.Seventh;
+import com.marcelus.tuples4java.tuples.ordinals.Sixth;
+import com.marcelus.tuples4java.tuples.ordinals.Third;
 
 public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E>, Sixth<F>,
-        Seventh<G>, Eighth<H>{
+        Seventh<G>, Eighth<H> {
 
     private final A first;
     private final B second;
@@ -31,8 +39,18 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
     }
 
     @Override
+    public Octet <A, B, C, D, E, F, G, H> withEighth(H eighth) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
+    }
+
+    @Override
     public E fifth() {
         return fifth;
+    }
+
+    @Override
+    public Octet <A, B, C, D, E, F, G, H> withFifth(E fifth) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
@@ -41,8 +59,18 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
     }
 
     @Override
+    public Octet <A, B, C, D, E, F, G, H> withFirst(A first) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
+    }
+
+    @Override
     public D fourth() {
         return fourth;
+    }
+
+    @Override
+    public Octet <A, B, C, D, E, F, G, H> withFourth(D fourth) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
@@ -51,8 +79,18 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
     }
 
     @Override
+    public Octet <A, B, C, D, E, F, G, H> withSecond(B second) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
+    }
+
+    @Override
     public G seventh() {
         return seventh;
+    }
+
+    @Override
+    public Octet <A, B, C, D, E, F, G, H> withSeventh(G seventh) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 
     @Override
@@ -61,7 +99,17 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
     }
 
     @Override
+    public Sixth<F> withSixth(F sixth) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
+    }
+
+    @Override
     public C third() {
         return third;
+    }
+
+    @Override
+    public Third<C> withThird(C third) {
+        return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 }

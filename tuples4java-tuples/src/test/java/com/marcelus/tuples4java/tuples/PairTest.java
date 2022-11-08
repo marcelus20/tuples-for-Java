@@ -1,5 +1,6 @@
 package com.marcelus.tuples4java.tuples;
 
+import io.vavr.control.Either;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -29,6 +30,33 @@ class PairTest {
 
         // Then
         Assertions.assertEquals(exceptedString, pair.toString());
+    }
+
+
+    @Test
+    void nullArrayScenario(){
+        // Given
+        Integer[] array = null ;
+
+        // When
+        Either<EmptyTuple, Pair<Integer, Integer>> either = Pair.fromArray(array);
+
+
+        // Then
+        Assertions.assertTrue(either.isLeft());
+    }
+
+    @Test
+    void differentSizeArrayScenarioScenario(){
+        // Given
+        String[] array = new String[]{"foo", "bar", "fizz", "buzz"} ;
+
+        // When
+        Either either = Pair.fromArray(array);
+
+
+        // Then
+        Assertions.assertTrue(either.isLeft());
     }
 
 }

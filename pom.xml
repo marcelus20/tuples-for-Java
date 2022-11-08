@@ -10,7 +10,6 @@
 
   <modules>
     <module>tuples4java-tuples</module>
-    <module>tuples4java-gettables</module>
   </modules>
           
   
