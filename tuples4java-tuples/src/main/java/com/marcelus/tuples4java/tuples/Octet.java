@@ -9,11 +9,19 @@ import com.marcelus.tuples4java.tuples.ordinals.Second;
 import com.marcelus.tuples4java.tuples.ordinals.Seventh;
 import com.marcelus.tuples4java.tuples.ordinals.Sixth;
 import com.marcelus.tuples4java.tuples.ordinals.Third;
+import com.marcelus.validators.ArrayValidator;
+import com.marcelus.validators.ListValidator;
+import com.marcelus.validators.NullValidator;
+import io.vavr.control.Either;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
+import java.util.List;
+
 public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E>, Sixth<F>,
         Seventh<G>, Eighth<H> {
+
+    public static final Integer SIZE = 8;
 
     private final A first;
     private final B second;
@@ -40,6 +48,31 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
     of(final A first, final B second, final C third, final D fourth, final E fifth, final F sixth, final G seventh,
        final H eighth) {
         return new Octet<>(first, second, third, fourth, fifth, sixth, seventh, eighth);
+    }
+
+    public static <T> Either<EmptyTuple, Octet<T, T, T, T, T, T, T, T>> fromArray(final T[] array) {
+        final Either<Object[], T[]> either = NullValidator.notNull(array)
+                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, SIZE));
+        if(either.isLeft()){
+            return Either.left(EmptyTuple.newInstance());
+        }else{
+            final T[] validatedArray = either.get();
+            return Either.right(new Octet<>(validatedArray[0], validatedArray[1], validatedArray[2],
+                    validatedArray[3], validatedArray[4], validatedArray[5], validatedArray[6], validatedArray[7]));
+        }
+    }
+
+    public static <T> Either<EmptyTuple, Octet<T, T, T, T, T, T, T, T>> fromList(final List<T> list){
+        final Either<List<T>, List<T>> either = NullValidator.notNull(list)
+                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, SIZE));
+        if(either.isLeft()){
+            return Either.left(EmptyTuple.newInstance());
+        }else{
+            final List<T> validatedList = either.get();
+            return Either.right(new Octet<>(validatedList.get(0), validatedList.get(1), validatedList.get(2),
+                    validatedList.get(3), validatedList.get(4), validatedList.get(5), validatedList.get(6),
+                    validatedList.get(7)));
+        }
     }
 
     @Override
