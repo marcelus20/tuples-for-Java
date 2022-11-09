@@ -186,4 +186,23 @@ class SeptetTest {
         // Then
         assertEquals("()", septetEither.getLeft().toString());
     }
+
+    @Test
+    void testingToList(){
+        Assertions.assertEquals(7, Septet.of(1, true, 5.3, 1L, "foo",
+                        "bar", "fizz")
+                .toList().size());
+    }
+
+    @Test
+    void testingToArray(){
+        Assertions.assertArrayEquals(new Object[]{1, true, 3.5, 1L, "foo", "bar", "fizz"}, Septet.of(1, true,
+                3.5, 1L,"foo", "bar", "fizz").toArray());
+    }
+
+    @Test
+    void checkingSize(){
+        Assertions.assertEquals(7, Septet.of(false, false, "prince", 10,
+                50, "foo", false).size());
+    }
 }

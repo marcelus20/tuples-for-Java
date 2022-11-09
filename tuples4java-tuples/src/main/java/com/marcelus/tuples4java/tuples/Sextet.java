@@ -13,11 +13,12 @@ import io.vavr.control.Either;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class Sextet <A, B, C, D, E, F> implements First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E>, Sixth<F> {
+public class Sextet <A, B, C, D, E, F> implements Tuple, First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E>, Sixth<F> {
 
-    public static final Integer SIZE = 6;
+    public static final Integer TUPLE_SIZE = 6;
     private final A first;
     private final B second;
     private final C third;
@@ -41,7 +42,7 @@ public class Sextet <A, B, C, D, E, F> implements First<A>, Second<B>, Third<C>,
 
     public static <T> Either<EmptyTuple, Sextet<T, T, T, T,T, T>> fromArray(final T[] array) {
         final Either<Object[], T[]> either = NullValidator.notNull(array)
-                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, SIZE));
+                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, TUPLE_SIZE));
         if(either.isLeft()){
             return Either.left(EmptyTuple.newInstance());
         }else{
@@ -53,7 +54,7 @@ public class Sextet <A, B, C, D, E, F> implements First<A>, Second<B>, Third<C>,
 
     public static <T> Either<EmptyTuple, Sextet<T, T, T, T,T, T>> fromList(final List<T> list){
         final Either<List<T>, List<T>> either = NullValidator.notNull(list)
-                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, SIZE));
+                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, TUPLE_SIZE));
         if(either.isLeft()){
             return Either.left(EmptyTuple.newInstance());
         }else{
@@ -148,5 +149,20 @@ public class Sextet <A, B, C, D, E, F> implements First<A>, Second<B>, Third<C>,
         return String.format("(%s, %s, %s, %s, %s, %s)", Tuple.wrapIfContainsComas(first),
                 Tuple.wrapIfContainsComas(second), Tuple.wrapIfContainsComas(third), Tuple.wrapIfContainsComas(fourth),
                 Tuple.wrapIfContainsComas(fifth), Tuple.wrapIfContainsComas(sixth));
+    }
+
+    @Override
+    public Integer size() {
+        return TUPLE_SIZE;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[]{first, second, third, fourth, fifth, sixth};
+    }
+
+    @Override
+    public List<Object> toList() {
+        return Arrays.asList(first, second, third, fourth, fifth, sixth);
     }
 }

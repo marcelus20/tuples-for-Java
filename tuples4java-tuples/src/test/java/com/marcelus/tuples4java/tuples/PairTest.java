@@ -3,6 +3,8 @@ package com.marcelus.tuples4java.tuples;
 import io.vavr.control.Either;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class PairTest {
 
@@ -83,6 +85,20 @@ class PairTest {
 
         // Then
         Assertions.assertEquals("(John, 26)", modifiedPair.toString());
+    }
+
+    @Test
+    void testingToList(){
+        Assertions.assertEquals(2, Pair.of(1, true).toList().size());
+    }
+
+    @Test
+    void testingToArray(){
+        Assertions.assertArrayEquals(new Object[]{1, true}, Pair.of(1, true).toArray());
+    }
+    @Test
+    void checkingSize(){
+        Assertions.assertEquals(2, Pair.of(false, false).size());
     }
 
 }

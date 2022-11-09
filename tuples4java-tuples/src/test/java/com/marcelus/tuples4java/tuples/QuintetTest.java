@@ -156,4 +156,22 @@ class QuintetTest {
         // Then
         assertEquals("()", quintetEither.getLeft().toString());
     }
+
+    @Test
+    void testingToList(){
+        Assertions.assertEquals(5, Quintet.of(1, true, 5.3, 1L, "foo")
+                .toList().size());
+    }
+
+    @Test
+    void testingToArray(){
+        Assertions.assertArrayEquals(new Object[]{1, true, 3.5, 1L, "foo"}, Quintet.of(1, true, 3.5, 1L,
+                        "foo").toArray());
+    }
+
+    @Test
+    void checkingSize(){
+        Assertions.assertEquals(5, Quintet.of(false, false, "prince", 10,
+                50).size());
+    }
 }

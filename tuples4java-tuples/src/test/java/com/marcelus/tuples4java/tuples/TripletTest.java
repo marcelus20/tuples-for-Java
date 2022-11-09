@@ -120,4 +120,19 @@ class TripletTest {
         // Then
         assertEquals("()", tripletEither.getLeft().toString());
     }
+
+    @Test
+    void testingToList(){
+        Assertions.assertEquals(3, Triplet.of(1, true, 5.3).toList().size());
+    }
+
+    @Test
+    void testingToArray(){
+        Assertions.assertArrayEquals(new Object[]{1, true, 3.5}, Triplet.of(1, true, 3.5).toArray());
+    }
+
+    @Test
+    void checkingSize(){
+        Assertions.assertEquals(3, Triplet.of(false, false, "prince").size());
+    }
 }

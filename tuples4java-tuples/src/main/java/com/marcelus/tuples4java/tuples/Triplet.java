@@ -10,11 +10,12 @@ import io.vavr.control.Either;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Triplet <A, B, C> implements Tuple, First<A>, Second<B>, Third<C> {
 
-    public static final Integer SIZE = 3;
+    public static final Integer TUPLE_SIZE = 3;
 
     private final A first;
     private final B second;
@@ -32,7 +33,7 @@ public class Triplet <A, B, C> implements Tuple, First<A>, Second<B>, Third<C> {
 
     public static <T> Either<EmptyTuple, Triplet<T, T, T>> fromArray(final T[] array) {
         final Either<Object[], T[]> either = NullValidator.notNull(array)
-                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, SIZE));
+                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, TUPLE_SIZE));
         if(either.isLeft()){
             return Either.left(EmptyTuple.newInstance());
         }else{
@@ -43,7 +44,7 @@ public class Triplet <A, B, C> implements Tuple, First<A>, Second<B>, Third<C> {
 
     public static <T> Either<EmptyTuple, Triplet<T, T, T>> fromList(final List<T> list){
         final Either<List<T>, List<T>> either = NullValidator.notNull(list)
-                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, SIZE));
+                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, TUPLE_SIZE));
         if(either.isLeft()){
             return Either.left(EmptyTuple.newInstance());
         }else{
@@ -112,6 +113,16 @@ public class Triplet <A, B, C> implements Tuple, First<A>, Second<B>, Third<C> {
 
     @Override
     public final Integer size() {
-        return SIZE;
+        return TUPLE_SIZE;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[]{first, second, third};
+    }
+
+    @Override
+    public List<Object> toList() {
+        return Arrays.asList(first, second, third);
     }
 }

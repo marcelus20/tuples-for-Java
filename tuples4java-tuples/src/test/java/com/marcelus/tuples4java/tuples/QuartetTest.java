@@ -136,4 +136,19 @@ class QuartetTest {
         // Then
         assertEquals("()", quartetEither.getLeft().toString());
     }
+
+    @Test
+    void testingToList(){
+        Assertions.assertEquals(4, Quartet.of(1, true, 5.3, 1L).toList().size());
+    }
+
+    @Test
+    void testingToArray(){
+        Assertions.assertArrayEquals(new Object[]{1, true, 3.5, 1L}, Quartet.of(1, true, 3.5, 1L).toArray());
+    }
+
+    @Test
+    void checkingSize(){
+        Assertions.assertEquals(4, Quartet.of(false, false, "prince", 10).size());
+    }
 }

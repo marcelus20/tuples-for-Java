@@ -210,4 +210,23 @@ class OctetTest {
         // Then
         assertEquals("()", octetEither.getLeft().toString());
     }
+
+    @Test
+    void testingToList(){
+        Assertions.assertEquals(8, Octet.of(1, true, 5.3, 1L, "foo",
+                        "bar", "fizz", "buzz")
+                .toList().size());
+    }
+
+    @Test
+    void testingToArray(){
+        Assertions.assertArrayEquals(new Object[]{1, true, 3.5, 1L, "foo", "bar", "fizz", "buzz"}, Octet.of(1,
+                true,3.5, 1L,"foo", "bar", "fizz", "buzz").toArray());
+    }
+
+    @Test
+    void checkingSize(){
+        Assertions.assertEquals(8, Octet.of(false, false, "prince", 10,
+                50, "foo", false, null).size());
+    }
 }

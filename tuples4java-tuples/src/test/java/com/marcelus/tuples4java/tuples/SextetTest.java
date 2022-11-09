@@ -170,4 +170,23 @@ class SextetTest {
         // Then
         assertEquals("()", sextetEither.getLeft().toString());
     }
+
+    @Test
+    void testingToList(){
+        Assertions.assertEquals(6, Sextet.of(1, true, 5.3, 1L, "foo",
+                        "bar")
+                .toList().size());
+    }
+
+    @Test
+    void testingToArray(){
+        Assertions.assertArrayEquals(new Object[]{1, true, 3.5, 1L, "foo", "bar"}, Sextet.of(1, true,
+                3.5, 1L,"foo", "bar").toArray());
+    }
+
+    @Test
+    void checkingSize(){
+        Assertions.assertEquals(6, Sextet.of(false, false, "prince", 10,
+                50, "foo").size());
+    }
 }

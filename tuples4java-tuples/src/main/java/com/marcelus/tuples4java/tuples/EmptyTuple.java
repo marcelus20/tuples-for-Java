@@ -1,11 +1,14 @@
 package com.marcelus.tuples4java.tuples;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class to represent an empty tuple or an invalid tuple.
  */
 public class EmptyTuple implements Tuple{
 
-    private static final Integer SIZE= 0;
+    private static final Integer TUPLE_SIZE = 0;
 
     private EmptyTuple(){
 
@@ -17,7 +20,17 @@ public class EmptyTuple implements Tuple{
 
     @Override
     public final Integer size() {
-        return SIZE;
+        return TUPLE_SIZE;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public List<Object> toList() {
+        return new ArrayList<>();
     }
 
     /*

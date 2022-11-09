@@ -16,12 +16,13 @@ import io.vavr.control.Either;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E>, Sixth<F>,
+public class Octet <A, B, C, D, E, F, G, H> implements Tuple, First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E>, Sixth<F>,
         Seventh<G>, Eighth<H> {
 
-    public static final Integer SIZE = 8;
+    public static final Integer TUPLE_SIZE = 8;
 
     private final A first;
     private final B second;
@@ -52,7 +53,7 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
 
     public static <T> Either<EmptyTuple, Octet<T, T, T, T, T, T, T, T>> fromArray(final T[] array) {
         final Either<Object[], T[]> either = NullValidator.notNull(array)
-                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, SIZE));
+                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, TUPLE_SIZE));
         if(either.isLeft()){
             return Either.left(EmptyTuple.newInstance());
         }else{
@@ -64,7 +65,7 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
 
     public static <T> Either<EmptyTuple, Octet<T, T, T, T, T, T, T, T>> fromList(final List<T> list){
         final Either<List<T>, List<T>> either = NullValidator.notNull(list)
-                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, SIZE));
+                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, TUPLE_SIZE));
         if(either.isLeft()){
             return Either.left(EmptyTuple.newInstance());
         }else{
@@ -184,5 +185,20 @@ public class Octet <A, B, C, D, E, F, G, H> implements First<A>, Second<B>, Thir
                 Tuple.wrapIfContainsComas(second), Tuple.wrapIfContainsComas(third), Tuple.wrapIfContainsComas(fourth),
                 Tuple.wrapIfContainsComas(fifth), Tuple.wrapIfContainsComas(sixth), Tuple.wrapIfContainsComas(seventh),
                 Tuple.wrapIfContainsComas(eighth));
+    }
+
+    @Override
+    public Integer size() {
+        return TUPLE_SIZE;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[]{first, second, third, fourth, fifth, sixth, seventh, eighth};
+    }
+
+    @Override
+    public List<Object> toList() {
+        return Arrays.asList(first, second, third, fourth, fifth, sixth, seventh, eighth);
     }
 }

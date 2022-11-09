@@ -4,6 +4,8 @@ package com.marcelus.tuples4java.tuples;
 import io.vavr.control.Either;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -109,4 +111,20 @@ class UnitTest{
         Assertions.assertEquals("bar", modifiedUnit.first());
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, -3, 15, Integer.MAX_VALUE})
+    void testingToList(Object first){
+        Assertions.assertEquals(1, Unit.of(first).toList().size());
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false, true, true, false, false})
+    void testingToArray(Object first){
+        Assertions.assertArrayEquals(new Object[]{first}, Unit.of(first).toArray());
+    }
+
+    @Test
+    void checkingSize(){
+        Assertions.assertEquals(1, Unit.of(false).size());
+    }
 }
