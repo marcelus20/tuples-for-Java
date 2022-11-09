@@ -1,7 +1,15 @@
 package com.marcelus.tuples4java.tuples;
 
+import io.vavr.control.Either;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SextetTest {
 
@@ -87,5 +95,79 @@ class SextetTest {
 
         // Then
         Assertions.assertEquals("(John, 25, '75, fictional road', false, 3.5, Blood Type -O)", modifiedSextet.toString());
+    }
+
+    @Test
+    void fromArrayHappyScenario(){
+        // Given
+        final Boolean[] array = new Boolean[]{false, false, false, true, true, false};
+
+        // When
+        final Either<EmptyTuple, Sextet<Boolean, Boolean, Boolean, Boolean,
+                Boolean, Boolean>> sextetEither = Sextet.fromArray(array);
+
+        // Then
+        assertEquals("(false, false, false, true, true, false)", sextetEither.get().toString());
+    }
+
+    @ParameterizedTest
+    @NullSource
+    void fromArrayNullScenario(final Boolean[] array){
+        // When
+        final Either<EmptyTuple, Sextet<Boolean, Boolean, Boolean, Boolean,
+                Boolean, Boolean>> sextetEither = Sextet.fromArray(array);
+
+        // Then
+        assertEquals("()", sextetEither.getLeft().toString());
+    }
+
+    @Test
+    void fromArrayWrongSizeScenario(){
+        // Given
+        final Boolean[] array = new Boolean[]{false, false};
+
+        // When
+        final Either<EmptyTuple, Sextet<Boolean, Boolean, Boolean, Boolean,
+                Boolean, Boolean>> sextetEither = Sextet.fromArray(array);
+
+        // Then
+        assertEquals("()", sextetEither.getLeft().toString());
+    }
+
+    @Test
+    void fromListHappyScenario(){
+        // Given
+        final List<Boolean> array = Arrays.asList(false, false, false, true, true, true);
+
+        // When
+        final Either<EmptyTuple, Sextet<Boolean, Boolean, Boolean, Boolean,
+                Boolean, Boolean>> sextetEither = Sextet.fromList(array);
+
+        // Then
+        assertEquals("(false, false, false, true, true, true)", sextetEither.get().toString());
+    }
+
+    @Test
+    void fromListWrongSizeScenario(){
+        // Given
+        final List<Boolean> array = Arrays.asList(false);
+
+        // When
+        final Either<EmptyTuple, Sextet<Boolean, Boolean, Boolean, Boolean,
+                Boolean, Boolean>> sextetEither = Sextet.fromList(array);
+
+        // Then
+        assertEquals("()", sextetEither.getLeft().toString());
+    }
+
+    @ParameterizedTest
+    @NullSource
+    void fromListNullScenario(final List<Boolean> array){
+        // When
+        final Either<EmptyTuple, Sextet<Boolean, Boolean, Boolean, Boolean,
+                Boolean, Boolean>> sextetEither = Sextet.fromList(array);
+
+        // Then
+        assertEquals("()", sextetEither.getLeft().toString());
     }
 }
