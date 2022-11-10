@@ -3,13 +3,13 @@
   <parent>
     <artifactId>tuples4java-parent</artifactId>
     <groupId>com.marcelus.tuples4java</groupId>
-    <version>1.0.2</version>
+    <version>1.2.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.marcelus.tuples4java.collectibletuples</groupId>
   <artifactId>collectible-tuples4java</artifactId>
   <name>collectible-tuples4java</name>
-  <version>1.0.2</version>
+  <version>1.2.0</version>
   <build>
     <plugins>
       <plugin>
