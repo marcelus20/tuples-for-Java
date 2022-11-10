@@ -3,22 +3,16 @@ package com.marcelus.tuples4java.tuples;
 
 import com.marcelus.tuples4java.tuples.ordinals.First;
 import com.marcelus.tuples4java.tuples.ordinals.Second;
-import com.marcelus.validators.ArrayValidator;
-import com.marcelus.validators.ListValidator;
-import com.marcelus.validators.NullValidator;
-import io.vavr.control.Either;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class Pair <A, B> implements Tuple, First<A>, Second<B> {
 
     private final A first;
     private final B second;
 
-    private static final Integer TUPLE_SIZE = 2;
+    public static final Integer TUPLE_SIZE = 2;
 
     private Pair(final A first, final B second) {
         this.first = first;
@@ -27,28 +21,6 @@ public class Pair <A, B> implements Tuple, First<A>, Second<B> {
 
     public static <A, B> Pair<A, B> of (final A first, final B second){
         return new Pair<>(first, second);
-    }
-
-    public static <T> Either<EmptyTuple, Pair<T, T>> fromArray(final T[] array) {
-        final Either<Object[], T[]> either = NullValidator.notNull(array)
-                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, TUPLE_SIZE));
-        if(either.isLeft()){
-            return Either.left(EmptyTuple.newInstance());
-        }else{
-            final T[] validatedArray = either.get();
-            return Either.right(new Pair<>(validatedArray[0], validatedArray[1]));
-        }
-    }
-
-    public static <T> Either<EmptyTuple, Pair<T, T>> fromList(final List<T> list){
-        final Either<List<T>, List<T>> either = NullValidator.notNull(list)
-                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, TUPLE_SIZE));
-        if(either.isLeft()){
-            return Either.left(EmptyTuple.newInstance());
-        }else{
-            final List<T> validatedList = either.get();
-            return Either.right(new Pair<>(validatedList.get(0), validatedList.get(1)));
-        }
     }
 
 
@@ -105,13 +77,5 @@ public class Pair <A, B> implements Tuple, First<A>, Second<B> {
         return TUPLE_SIZE;
     }
 
-    @Override
-    public Object[] toArray() {
-        return new Object[]{first, second};
-    }
 
-    @Override
-    public List<Object> toList() {
-        return Arrays.asList(first, second);
-    }
 }

@@ -10,6 +10,7 @@
 
   <modules>
     <module>tuples4java</module>
+    <module>collectible-tuples4java</module>
   </modules>
           
   

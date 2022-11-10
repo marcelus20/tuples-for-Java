@@ -5,15 +5,8 @@ import com.marcelus.tuples4java.tuples.ordinals.First;
 import com.marcelus.tuples4java.tuples.ordinals.Fourth;
 import com.marcelus.tuples4java.tuples.ordinals.Second;
 import com.marcelus.tuples4java.tuples.ordinals.Third;
-import com.marcelus.validators.ArrayValidator;
-import com.marcelus.validators.ListValidator;
-import com.marcelus.validators.NullValidator;
-import io.vavr.control.Either;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class Quartet <A, B, C, D> implements Tuple , First<A>, Second<B>, Third<C>, Fourth<D> {
 
@@ -33,30 +26,6 @@ public class Quartet <A, B, C, D> implements Tuple , First<A>, Second<B>, Third<
 
     public static <A, B, C, D> Quartet<A, B, C, D> of(A first, B second, C third, D fourth) {
         return new Quartet<>(first, second, third, fourth);
-    }
-
-    public static <T> Either<EmptyTuple, Quartet<T, T, T, T>> fromArray(final T[] array) {
-        final Either<Object[], T[]> either = NullValidator.notNull(array)
-                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, TUPLE_SIZE));
-        if(either.isLeft()){
-            return Either.left(EmptyTuple.newInstance());
-        }else{
-            final T[] validatedArray = either.get();
-            return Either.right(new Quartet<>(validatedArray[0], validatedArray[1], validatedArray[2],
-                    validatedArray[3]));
-        }
-    }
-
-    public static <T> Either<EmptyTuple, Quartet<T, T, T, T>> fromList(final List<T> list){
-        final Either<List<T>, List<T>> either = NullValidator.notNull(list)
-                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, TUPLE_SIZE));
-        if(either.isLeft()){
-            return Either.left(EmptyTuple.newInstance());
-        }else{
-            final List<T> validatedList = either.get();
-            return Either.right(new Quartet<>(validatedList.get(0), validatedList.get(1), validatedList.get(2),
-                    validatedList.get(3)));
-        }
     }
 
     @Override
@@ -130,15 +99,5 @@ public class Quartet <A, B, C, D> implements Tuple , First<A>, Second<B>, Third<
     @Override
     public final Integer size() {
         return TUPLE_SIZE;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[]{first, second, third, fourth};
-    }
-
-    @Override
-    public List<Object> toList() {
-        return Arrays.asList(first, second, third, fourth);
     }
 }

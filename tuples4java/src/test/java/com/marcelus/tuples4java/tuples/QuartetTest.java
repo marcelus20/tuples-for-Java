@@ -1,15 +1,8 @@
 package com.marcelus.tuples4java.tuples;
 
-import io.vavr.control.Either;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class QuartetTest {
@@ -67,88 +60,5 @@ class QuartetTest {
 
         // Then
         Assertions.assertEquals("(John, 25, '75, fictional road', true)", modifiedQuartet.toString());
-    }
-
-    @Test
-    void fromArrayHappyScenario(){
-        // Given
-        final Boolean[] array = new Boolean[]{false, false, false, true};
-
-        // When
-        final Either<EmptyTuple, Quartet<Boolean, Boolean, Boolean, Boolean>> quartetEither = Quartet.fromArray(array);
-
-        // Then
-        assertEquals("(false, false, false, true)", quartetEither.get().toString());
-    }
-
-    @ParameterizedTest
-    @NullSource
-    void fromArrayNullScenario(final Boolean[] array){
-        // When
-        final Either<EmptyTuple, Quartet<Boolean, Boolean, Boolean, Boolean>> quartetEither = Quartet.fromArray(array);
-
-        // Then
-        assertEquals("()", quartetEither.getLeft().toString());
-    }
-
-    @Test
-    void fromArrayWrongSizeScenario(){
-        // Given
-        final Boolean[] array = new Boolean[]{false, false};
-
-        // When
-        final Either<EmptyTuple, Quartet<Boolean, Boolean, Boolean, Boolean>> quartetEither = Quartet.fromArray(array);
-
-        // Then
-        assertEquals("()", quartetEither.getLeft().toString());
-    }
-
-    @Test
-    void fromListHappyScenario(){
-        // Given
-        final List<Boolean> array = Arrays.asList(false, false, false, true);
-
-        // When
-        final Either<EmptyTuple, Quartet<Boolean, Boolean, Boolean, Boolean>> quartetEither = Quartet.fromList(array);
-
-        // Then
-        assertEquals("(false, false, false, true)", quartetEither.get().toString());
-    }
-
-    @Test
-    void fromListWrongSizeScenario(){
-        // Given
-        final List<Boolean> array = Arrays.asList(false, false, false, true, true, null);
-
-        // When
-        final Either<EmptyTuple, Quartet<Boolean, Boolean, Boolean, Boolean>> quartetEither = Quartet.fromList(array);
-
-        // Then
-        assertEquals("()", quartetEither.getLeft().toString());
-    }
-
-    @ParameterizedTest
-    @NullSource
-    void fromListNullScenario(final List<Boolean> array){
-        // When
-        final Either<EmptyTuple, Quartet<Boolean, Boolean, Boolean, Boolean>> quartetEither = Quartet.fromList(array);
-
-        // Then
-        assertEquals("()", quartetEither.getLeft().toString());
-    }
-
-    @Test
-    void testingToList(){
-        Assertions.assertEquals(4, Quartet.of(1, true, 5.3, 1L).toList().size());
-    }
-
-    @Test
-    void testingToArray(){
-        Assertions.assertArrayEquals(new Object[]{1, true, 3.5, 1L}, Quartet.of(1, true, 3.5, 1L).toArray());
-    }
-
-    @Test
-    void checkingSize(){
-        Assertions.assertEquals(4, Quartet.of(false, false, "prince", 10).size());
     }
 }

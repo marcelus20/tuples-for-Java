@@ -1,13 +1,6 @@
 package com.marcelus.tuples4java.tuples;
 
 import com.marcelus.tuples4java.tuples.ordinals.First;
-import com.marcelus.validators.ArrayValidator;
-import com.marcelus.validators.ListValidator;
-import com.marcelus.validators.NullValidator;
-import io.vavr.control.Either;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class Unit<A> implements Tuple, First<A> {
 
@@ -24,27 +17,6 @@ public class Unit<A> implements Tuple, First<A> {
     }
 
 
-    public static <A> Either<EmptyTuple, Unit<A>> fromArray(final A[] array) {
-        final Either<Object[], A[]> either = NullValidator.notNull(array)
-                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, TUPLE_SIZE));
-        if(either.isLeft()){
-            return Either.left(EmptyTuple.newInstance());
-        }else{
-            return Either.right(new Unit<>(array[0]));
-        }
-    }
-
-    public static <A> Either<EmptyTuple, Unit<A>> fromList(List<A> list){
-        final Either<List<A>, List<A>> either = NullValidator.notNull(list)
-                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, TUPLE_SIZE));
-        if(either.isLeft()){
-            return Either.left(EmptyTuple.newInstance());
-        }else{
-            return Either.right(new Unit<>(list.get(0)));
-        }
-    }
-
-
     @Override
     public A first() {
         return first;
@@ -57,18 +29,8 @@ public class Unit<A> implements Tuple, First<A> {
 
 
     @Override
-    public final Integer size() {
+    public Integer size() {
         return TUPLE_SIZE;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[]{first};
-    }
-
-    @Override
-    public List<Object> toList() {
-        return Arrays.asList(first);
     }
 
 

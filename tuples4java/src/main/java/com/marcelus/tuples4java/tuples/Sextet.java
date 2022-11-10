@@ -6,15 +6,8 @@ import com.marcelus.tuples4java.tuples.ordinals.Fourth;
 import com.marcelus.tuples4java.tuples.ordinals.Second;
 import com.marcelus.tuples4java.tuples.ordinals.Sixth;
 import com.marcelus.tuples4java.tuples.ordinals.Third;
-import com.marcelus.validators.ArrayValidator;
-import com.marcelus.validators.ListValidator;
-import com.marcelus.validators.NullValidator;
-import io.vavr.control.Either;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class Sextet <A, B, C, D, E, F> implements Tuple, First<A>, Second<B>, Third<C>, Fourth<D>, Fifth<E>, Sixth<F> {
 
@@ -38,30 +31,6 @@ public class Sextet <A, B, C, D, E, F> implements Tuple, First<A>, Second<B>, Th
     public static <A, B, C, D, E, F> Sextet<A, B, C, D, E, F>
     of(final A first, final B second, final C third, final D fourth, final E fifth, final F sixth) {
         return new Sextet<>(first, second, third, fourth, fifth, sixth);
-    }
-
-    public static <T> Either<EmptyTuple, Sextet<T, T, T, T,T, T>> fromArray(final T[] array) {
-        final Either<Object[], T[]> either = NullValidator.notNull(array)
-                .flatMap(nonNullArray -> ArrayValidator.arrayCorrectSize(nonNullArray, TUPLE_SIZE));
-        if(either.isLeft()){
-            return Either.left(EmptyTuple.newInstance());
-        }else{
-            final T[] validatedArray = either.get();
-            return Either.right(new Sextet<>(validatedArray[0], validatedArray[1], validatedArray[2],
-                    validatedArray[3], validatedArray[4], validatedArray[5]));
-        }
-    }
-
-    public static <T> Either<EmptyTuple, Sextet<T, T, T, T,T, T>> fromList(final List<T> list){
-        final Either<List<T>, List<T>> either = NullValidator.notNull(list)
-                .flatMap(nonNullList -> ListValidator.listCorrectSize(nonNullList, TUPLE_SIZE));
-        if(either.isLeft()){
-            return Either.left(EmptyTuple.newInstance());
-        }else{
-            final List<T> validatedList = either.get();
-            return Either.right(new Sextet<>(validatedList.get(0), validatedList.get(1), validatedList.get(2),
-                    validatedList.get(3), validatedList.get(4), validatedList.get(5)));
-        }
     }
 
     @Override
@@ -154,15 +123,5 @@ public class Sextet <A, B, C, D, E, F> implements Tuple, First<A>, Second<B>, Th
     @Override
     public Integer size() {
         return TUPLE_SIZE;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[]{first, second, third, fourth, fifth, sixth};
-    }
-
-    @Override
-    public List<Object> toList() {
-        return Arrays.asList(first, second, third, fourth, fifth, sixth);
     }
 }
