@@ -34,6 +34,7 @@ Module focused on the basic storing of value inside a Tuple.
 Module comes with the fromArray, fromList, toArray and toList methods. When performing the *from* operations, 
 the method won't through, but will return an ```Either<EmptyTuple, Tuple>``` instead. EmptyTuple indicates
 the operation didn't succeed when converting from array or from list. 
+
 ---
 
 ## To install
@@ -49,9 +50,10 @@ Check the Collectible Tuples4java [README.md](collectible-tuples4java/README.md)
 ### Installing from the parent folder
 
 You can install the both modules at once by issuing the **mvn clean install** at the parent pom. However, for building Collectible-Tuples4java, an external lib called 
-[marcelus20/jvalidators](https://github.com/marcelus20/jvalidators#readme) needs to be installed before-hand. Check the [Collectible Tuples4java README.md]
-(collectible-tuples4java/README.md) for more details.  
-These extra-steps is needed until this lib is available at the Maven Repository.
+[marcelus20/jvalidators](https://github.com/marcelus20/jvalidators#readme) needs to be installed before-hand. 
+
+Check the [Collectible Tuples4java README.md](collectible-tuples4java/README.md) for more details. These extra-steps is needed until this lib is available at the Maven Repository.
+
 ---
 
 ### Module Class Names
