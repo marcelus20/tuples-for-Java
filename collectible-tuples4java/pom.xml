@@ -4,12 +4,12 @@
   <parent>
     <artifactId>tuples4java-parent</artifactId>
     <groupId>com.marcelus.tuples4java</groupId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.2</version>
   </parent>
 
   <groupId>com.marcelus.tuples4java.collectibletuples</groupId>
   <artifactId>collectible-tuples4java</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.2</version>
 
   <name>collectible-tuples4java</name>
 
@@ -25,13 +25,13 @@
     <dependency>
       <groupId>com.marcelus.tuples4java.tuples</groupId>
       <artifactId>tuples4java</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.2</version>
     </dependency>
 
     <dependency>
       <groupId>com.marcelus.validators</groupId>
       <artifactId>jvalidators</artifactId>
-      <version>1.0.1-SNAPSHOT</version>
+      <version>1.0.0</version>
     </dependency>
 
     <dependency>
