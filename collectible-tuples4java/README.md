@@ -27,7 +27,7 @@ After doing the above steps, you will be able to import this lib into your proje
     <dependency>
         <groupId>com.marcelus.tuples4java.collectibletuples</groupId>
         <artifactId>collectible-tuples4java</artifactId>
-        <version>1.0.2</version>
+        <version>1.2.0</version>
     </dependency>
 ```
 
